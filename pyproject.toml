@@ -1,0 +1,46 @@
+[project]
+name = "sketchybarrc"
+version = "0.1.0"
+description = "typed sketchybarrc with python"
+authors = [
+    {name = "natsukium", email = "tomoya.otabi@gmail.com"},
+]
+dependencies = [
+    "typing-extensions>=4.5.0",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "CC0"}
+dynamic = ["version"]
+
+[tool.pdm.version]
+source = "file"
+path = "src/sketchybarrc/__version__.py"
+
+[tool.pdm.dev-dependencies]
+test = [
+    "pytest>=7.2.2",
+]
+dev = [
+    "ruff>=0.0.256",
+    "black>=23.1.0",
+    "pyright>=1.1.299",
+    "debugpy>=1.6.6",
+]
+
+[build-system]
+requires = ["pdm-pep517>=1.0"]
+build-backend = "pdm.pep517.api"
+
+[tool.ruff]
+select = ["E", "F", "I"]
+
+[tool.ruff.isort]
+known-first-party = ["sketchybarrc"]
+
+[tool.pyright]
+extraPaths = ["./__pypackages__/3.10/lib/", "./src/"]
+include = ["src"]
+reportMissingTypeStubs = false
+typeChekingMode = "strict"
+
